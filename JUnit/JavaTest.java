@@ -1,10 +1,5 @@
 package JUnit;
 
-import org.junit.Test;
-
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
 public class JavaTest {
     private int[] fibo = new int[40];
 
@@ -32,13 +27,17 @@ public class JavaTest {
         }
 
         return fibo;
-
     }
 
-    @Override
-    public String toString() {
-        return "JavaTest{" +
-                "fibo=" + Arrays.toString(fibo) +
-                '}';
+
+    public static boolean isOdd(int number) {
+        return number % 2 != 0;
     }
+
+    public static boolean isNull(Integer number){
+        if(number!=null)
+        return number!=0;
+        else return true;
+    }
+
 }
