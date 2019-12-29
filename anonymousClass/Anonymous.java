@@ -5,12 +5,7 @@ package anonymousClass;
  */
 public class Anonymous{
     public static void main(String[] args) {
-        AnonymousLanguage python = new AnonymousLanguage() {
-            @Override
-            public void languageSpeak() {
-                System.out.println("Using Python");
-            }
-        };
+        AnonymousLanguage python = () -> System.out.println("Using Python"); // Lambda
 
         AnonymousLanguage java = new AnonymousLanguage() {
             @Override
