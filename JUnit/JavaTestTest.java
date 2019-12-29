@@ -3,9 +3,10 @@ package JUnit;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.condition.EnabledOnOs;
-import org.junit.jupiter.api.condition.OS;
+import org.junit.jupiter.api.condition.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.NullSource;
@@ -15,6 +16,7 @@ import java.time.Month;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 class JavaTestTest {
     private JavaTest apple = new JavaTest();
@@ -62,6 +64,20 @@ class JavaTestTest {
     void someMonths_Are30DaysLong_Leap(Month month) {
         final boolean isALeapYear = false;
         assertEquals(30, month.length(isALeapYear));
+    }
+
+    @Test
+    @EnabledOnJre(JRE.JAVA_8)
+    void onlyOnJava8() {
+        System.out.println("Java 8");
+    }
+
+
+    @Order(1)
+    @RepeatedTest(10) // Dynamic JavaScript expression.
+    @DisabledIf("Math.random() < 0.314159")
+    void mightNotBeExecuted() {
+        System.out.println("Was executed ");
     }
 
 }
