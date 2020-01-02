@@ -5,12 +5,13 @@ import java.util.Hashtable;
 
 public class HashTable {
 
-    Hashtable<Integer, String> table = new Hashtable<>();
-    Enumeration<Integer> enumKey;
+    private final Hashtable<Integer, String> table = new Hashtable<>();
+    private Enumeration<Integer> enumKey;
+
+
     public static void main(String[] args) {
 
         HashTable ClassTable = new HashTable();
-
         ClassTable.table.put(1,"Roma");
         ClassTable.table.put(2,"Apple");
         ClassTable.table.put(3,"Banana");
@@ -22,7 +23,6 @@ public class HashTable {
 
         String definition = ClassTable.table.getOrDefault(4,"Macbook"); //if no key(4) will be Macbook
         System.out.println(definition);
-        //****
 
         /**
          *  Put if Absent (absent - not here)
@@ -31,12 +31,10 @@ public class HashTable {
         ClassTable.table.putIfAbsent(4,"Roma"); // Will be added
         ClassTable.table.putIfAbsent(1,"New");
         ClassTable.getAll();
-
-
     }
 
 
-    public void getAll(){
+    private void getAll(){
         String value;
         enumKey = table.keys();
         while (enumKey.hasMoreElements()) {
