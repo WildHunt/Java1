@@ -19,6 +19,16 @@ public class katana4 {
         return false;
     }
 
+    /**
+     * The best solution
+     */
+    public static boolean validatePinBest(String pin) {
+        return pin.matches("\\d{4}|\\d{6}");
+        //return pin.matches("[0-9]{4}|[0-9]{6}");
+    }
+
+
+
     @Test
     public void validPins() {
         assertEquals(true, katana4.validatePin("1234"));
